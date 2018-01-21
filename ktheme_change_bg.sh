@@ -29,8 +29,8 @@ exitfn() {
 	fi
 	
 	if [ -d "./Images" ]; then
-		if [ -f "./Images/bg_chatroom@2x.png" ]; then
-			rm ./Images/bg_chatroom@2x.png
+		if [ -f "./Images/chatroom_bg@2x.png" ]; then
+			rm ./Images/chatroom_bg@2x.png
 		fi
 		if [ ! "$(ls -A ./Images)" ]; then
 			rm -r ./Images
@@ -46,10 +46,10 @@ if [ ! "$1" ] || [ ! -f "$1" ]; then
 	exit 1
 fi
 
-if [ -f "./KakaoTalk.css" ] || [ -f "./Images/bg_chatroom@2x.png" ]; then
+if [ -f "./KakaoTalk.css" ] || [ -f "./Images/chatroom_bg@2x.png" ]; then
 	echo; echo "There are files that can be conflicted."
 	echo " ./KakaoTalk.css"
-	echo " ./Images/bg_chatroom@2x.png"
+	echo " ./Images/chatroom_bg@2x.png"
 	echo "Please remove them or change path and try again."
 	exit 1
 fi
@@ -69,11 +69,12 @@ if [ ! -d "./Images" ]; then
 	mkdir "./Images"
 fi
 
-TEMP_BG="./Images/bg_chatroom@2x.png"
-unzip -p "$1" "Images/bg_chatroom@2x.png" > "$TEMP_BG"
+TEMP_BG="./Images/chatroom_bg@2x.png"
+unzip -p "$1" "Images/chatroom_bg@2x.png" > "$TEMP_BG"
 
 open "./Images"
 echo "Background image was extracted."
+echo "Background color - #c4c4c4"
 read -p "Modify this file and press any key to continue..."
 
 echo; echo "[2] Copy .ktheme"
